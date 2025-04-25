@@ -19,22 +19,13 @@ namespace _Scripts.Manager
 
         public static GameManager Instance;
 
-        public GameState GameState
-        {
-            get => _gameState;
-            set
-            {
-                OnGameStateChange?.Invoke(value);
-                _gameState = value;
-            }
-        }
-        private GameState _gameState;
+        public bool active;
 
-        #endregion
+        [SerializeField] private float bpm;
+        [SerializeField] private float window;
+        [SerializeField] private SpriteRenderer spriteRenderer;
 
-        #region Action Events
-
-        public event Action<GameState> OnGameStateChange;
+        private float Period => 60 / bpm;
 
         #endregion
 
@@ -43,7 +34,12 @@ namespace _Scripts.Manager
         private void Awake()
         {
             Instance = this;
-            GameState = GameState.Gameplay;
+        }
+
+        private void Update()
+        {
+            active = (Time.time % Period) < window;
+            spriteRenderer.color = active ? Color.Red : Color.White;
         }
 
         #endregion
