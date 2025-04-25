@@ -5,9 +5,9 @@ using UnityEngine.Serialization;
 
 namespace _Scripts.PlayerControls
 {
-    public class PlayerInputHandler : MonoBehaviour
+    public class InputHandler : MonoBehaviour
     {
-        public static PlayerInputHandler Instance;
+        public static InputHandler Instance;
 
         private PlayerInput PlayerInput => _playerInput ??= GetComponent<PlayerInput>();
         private PlayerInput _playerInput;
@@ -21,7 +21,7 @@ namespace _Scripts.PlayerControls
             Instance = this;
         }
 
-        public void JumpInput(InputAction.CallbackContext context)
+        public void Jump(InputAction.CallbackContext context)
         {
             if (context.canceled) JumpInput = false;
             if (!context.started) return;
