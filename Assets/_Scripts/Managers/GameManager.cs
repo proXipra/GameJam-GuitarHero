@@ -1,15 +1,5 @@
-using System;
-using System.Collections;
-using _Scripts.Entities;
-using _Scripts.Intermediaries;
-using _Scripts.PlayerControls;
-using _Scripts.ScriptableObjects;
-using DG.Tweening;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
-using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
-using Steamworks;
+
 
 namespace _Scripts.Manager
 {
@@ -39,7 +29,7 @@ namespace _Scripts.Manager
         private void Update()
         {
             active = (Time.time % Period) < window;
-            spriteRenderer.color = active ? Color.Red : Color.White;
+            spriteRenderer.color = active ? Color.red : Color.white;
         }
 
         #endregion
