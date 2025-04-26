@@ -9,8 +9,6 @@ namespace _Scripts.Manager
 {
     public class GameManager : MonoBehaviour
     {
-        
-
         public static GameManager Instance;
 
         public bool active;
@@ -25,11 +23,6 @@ namespace _Scripts.Manager
         public int score;
         public float Period => 60 / bpm;
 
-        private void OnDisable()
-        {
-            InputHandler.Instance.OnJumpInput -= HandleOnJumpInput;
-        }
-
         private void Awake()
         {
             Instance = this;
@@ -38,41 +31,35 @@ namespace _Scripts.Manager
         private void Start()
         {
             InputHandler.Instance.OnJumpInput += HandleOnJumpInput;
-            InvokeRepeating(nameof(StartWindowCoroutine), 1, Period);
-        }
 
-        private void StartWindowCoroutine()
-        {
-            StartCoroutine(WindowCoroutine());
+            InvokeRepeating(nameof(EnterWindow), 0, Period);
         }
-
-        private IEnumerator WindowCoroutine()
+        
+        private void OnDisable()
         {
-            bool timeOut = false;
-            float startTime = Time.time;
-            active = true;
-            spriteRenderer.color = Color.red;
-            while (true)
-            {
-                if (InputHandler.Instance.JumpInput) break;
-                if (Time.time > startTime + window)
-                {
-                    timeOut = true;
-                    break;
-                }
-                yield return new WaitForSeconds(0.02f);
-            }
-            score = timeOut ? score - 1 : score + 1;
-            active = false;
-            spriteRenderer.color = timeOut ? Color.white : Color.green;
-            yield return null;
+            InputHandler.Instance.OnJumpInput -= HandleOnJumpInput;
         }
 
         private void HandleOnJumpInput()
         {
-            if (!active) score--;
+            score = active ? score + 1 : score - 1;
+            if (active) _pressed = true;
         }
-        
+
+        private void EnterWindow()
+        {
+            active = true;
+            _pressed = false;
+            spriteRenderer.color = Color.red;
+            Invoke(nameof(ExitWindow), window);
+        }
+
+        private void ExitWindow()
+        {
+            if (!_pressed) score--;
+            spriteRenderer.color = Color.white;
+            active = false;
+        }
     }
     
     public enum GameState
