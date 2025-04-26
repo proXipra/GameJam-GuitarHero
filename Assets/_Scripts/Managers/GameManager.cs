@@ -19,12 +19,14 @@ namespace _Scripts.Manager
         public float window;
         [SerializeField] private float bpm;
         [SerializeField] private SpriteRenderer spriteRenderer;
+        [SerializeField] private AudioSource _audioSource;
 
         private bool _pressed;
         public int score;
         public float Period => 60 / bpm;
 
         public event Action OnStartMoving;
+
 
         private void Awake()
         {
@@ -36,6 +38,7 @@ namespace _Scripts.Manager
             InputHandler.Instance.OnJumpInput += HandleOnJumpInput;
             OnStartMoving?.Invoke();
             Invoke(nameof(StartGame), 3);
+            Invoke(nameof(StartPlayingMusic), 3 - (GameManager.Instance.Period - GameManager.Instance.window) / 2);
         }
         
         private void OnDisable()
@@ -68,6 +71,12 @@ namespace _Scripts.Manager
             spriteRenderer.color = Color.white;
             active = false;
         }
+
+        void StartPlayingMusic()
+        {
+            _audioSource.Play();
+        }
+
     }
     
     public enum GameState

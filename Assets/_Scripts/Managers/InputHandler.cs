@@ -16,15 +16,13 @@ namespace _Scripts.PlayerControls
         }
 
 
-
-
         public bool JumpInput { get; set; }
         
         public event Action OnJumpInput;
 
         private void Awake()
         {
-            Instance = this;
+            _instance = this;
         }
 
         public void Jump(InputAction.CallbackContext context)
