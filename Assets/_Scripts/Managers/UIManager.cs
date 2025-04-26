@@ -1,0 +1,26 @@
+using _Scripts.Manager;
+using TMPro;
+using UnityEngine;
+
+public class UIManager : MonoBehaviour
+{
+    private static UIManager _instance;  
+    public static UIManager Instance
+    {
+        get { return _instance; }
+    }
+
+    [SerializeField] private TextMeshProUGUI _text;
+
+    private void Awake()
+    {
+        _instance = this;
+    }
+
+    private void Update()
+    {
+        _text.text = $"{GameManager.Instance.score}";   
+    }
+
+}
+
