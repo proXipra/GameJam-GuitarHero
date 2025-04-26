@@ -25,13 +25,6 @@ namespace _Scripts.Manager
         public int score;
         public float Period => 60 / bpm;
 
-
-
-        private void OnEnable()
-        {
-            InputHandler.Instance.OnJumpInput += HandleOnJumpInput;
-        }
-
         private void OnDisable()
         {
             InputHandler.Instance.OnJumpInput -= HandleOnJumpInput;
@@ -44,6 +37,7 @@ namespace _Scripts.Manager
 
         private void Start()
         {
+            InputHandler.Instance.OnJumpInput += HandleOnJumpInput;
             InvokeRepeating(nameof(StartWindowCoroutine), 1, Period);
         }
 
