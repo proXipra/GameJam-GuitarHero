@@ -37,5 +37,10 @@ namespace _Scripts.Slots
         {
             if (_moving) transform.Translate(Vector3.up * Time.fixedDeltaTime);
         }
+
+        public void DestroySlot()
+        {
+            Destroy(gameObject);
+        }
     }
 }
