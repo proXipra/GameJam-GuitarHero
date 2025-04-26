@@ -21,7 +21,14 @@ namespace _Scripts.Manager
         [SerializeField] private AudioSource _audioSource;
 
         private bool _pressed;
-        public int score;
+        private int _score;
+        public int Score
+        {
+            get
+            {
+                return _score;
+            }
+        }
         private int _bestScore;
         public int BestScore
         {
@@ -40,12 +47,25 @@ namespace _Scripts.Manager
             Instance = this;
         }
 
+        private void Update()
+        {
+            if (_score > _bestScore)
+            {
+                _bestScore = _score;
+                PlayerPrefs.SetInt("BestScore", _score);
+                PlayerPrefs.Save();
+            }
+
+        }
+
         private void Start()
         {
+            
             InputHandler.Instance.OnJumpInput += HandleOnJumpInput;
             OnStartMoving?.Invoke();
             Invoke(nameof(StartGame), 3);
             Invoke(nameof(StartPlayingMusic), 3 - (GameManager.Instance.Period - GameManager.Instance.window) / 2);
+            _bestScore = PlayerPrefs.GetInt("BestScore", 0);
         }
         
         private void OnDisable()
@@ -62,16 +82,16 @@ namespace _Scripts.Manager
         {
             if (active)
             {
-                score++;
+                _score++;
                 _pressed = true;
             }
             else
             {
-                if (score == 0)
+                if (_score == 0)
                 {
                     return;
                 }
-                score--;
+                _score--;
             }
             
         }
@@ -87,11 +107,11 @@ namespace _Scripts.Manager
         {
             if (!_pressed)
             {
-                if (score == 0)
+                if (_score == 0)
                 {
                     return;
                 }
-                score--;
+                _score--;
             }
            
             active = false;

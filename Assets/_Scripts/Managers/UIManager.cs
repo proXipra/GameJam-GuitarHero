@@ -10,7 +10,7 @@ public class UIManager : MonoBehaviour
         get { return _instance; }
     }
 
-    [SerializeField] private TextMeshProUGUI _text;
+    [SerializeField] private TextMeshProUGUI _scoreText;
     [SerializeField] private TextMeshProUGUI _bestScore;
 
 
@@ -21,7 +21,8 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        _text.text = $"{GameManager.Instance.score}";
+        _scoreText.text = $"Score:{GameManager.Instance.Score}";
+        _bestScore.text = $"Best:{GameManager.Instance.BestScore}";
 
         
     }
