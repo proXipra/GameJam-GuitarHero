@@ -15,7 +15,7 @@ namespace _Scripts.Slots
         
         private void Start()
         {
-            for (int i = 0; i < 30; i++)
+            for (int i = 0; i < 300; i++)
             {
                 var slotInstance = Instantiate(slot, transform);
                 slotInstance.distance = distance;

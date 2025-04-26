@@ -8,6 +8,7 @@ namespace _Scripts.Slots
         public float targetYDisplacement;
         public float distance;
         public bool caught;
+        public int index;
         
         private SpriteRenderer SpriteRenderer => _spriteRenderer ??= GetComponent<SpriteRenderer>();
         private SpriteRenderer _spriteRenderer;
@@ -21,6 +22,7 @@ namespace _Scripts.Slots
 
         public void FireSlot(int slotIndex)
         {
+            index = slotIndex;
             SpriteRenderer.color = Color.white;
             transform.position = Vector3.down * distance + slotIndex switch
             {
