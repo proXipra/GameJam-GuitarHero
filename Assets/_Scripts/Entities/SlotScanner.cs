@@ -22,9 +22,13 @@ namespace _Scripts.Entities
 
         private void HandleOnJumpInput()
         {
-            var otherCollider = Physics2D.OverlapBox(transform.position, _workSpace,
+            var otherColliders = Physics2D.OverlapBoxAll(transform.position, _workSpace,
                 0, slotLayer);
-            if (otherCollider) otherCollider.GetComponent<Slot>().DestroySlot();
+            if (otherColliders.Length == 0) return;
+            foreach (var otherCollider in otherColliders)
+            {
+                otherCollider.GetComponent<Slot>().DestroySlot();
+            }
         }
     }
 }
