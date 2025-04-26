@@ -3,12 +3,39 @@
     "maps": [
         {
             "name": "Gameplay",
-            "id": "e6780c9d-4712-4007-ac79-983d17209882",
+            "id": "60888fc1-2e33-4b52-9093-4b580432dd80",
             "actions": [
                 {
-                    "name": "Jump",
+                    "name": "Primary",
                     "type": "Button",
-                    "id": "75d2e3ba-7042-470b-a5de-27ce409c44ab",
+                    "id": "59e49995-5c4e-41e6-a10f-3092c62c614d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Secondary",
+                    "type": "Button",
+                    "id": "c81571a7-5652-4bd9-bbcd-3786e939f457",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Tertiary",
+                    "type": "Button",
+                    "id": "7df8e7e3-c905-4277-ac42-2783d774bfd8",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Quaternary",
+                    "type": "Button",
+                    "id": "cca476ba-31fa-4f68-93d5-44cbe59e036d",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -18,40 +45,45 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "65458183-e3e3-4562-b2bb-37e656dadae3",
-                    "path": "<Keyboard>/space",
+                    "id": "b05eb2da-cdf5-44b6-9c83-a1eec01fa342",
+                    "path": "<Keyboard>/h",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "Jump",
+                    "groups": ";Phase1",
+                    "action": "Primary",
                     "isComposite": false,
                     "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "Pause",
-            "id": "4d120a50-572d-47d5-8a86-61a86144fc53",
-            "actions": [
-                {
-                    "name": "Resume",
-                    "type": "Button",
-                    "id": "64780fc1-2742-4a55-8eb0-9b4bd0d573f8",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
+                },
                 {
                     "name": "",
-                    "id": "c1d4a268-e438-4ead-96bd-f4d941dfa1ab",
-                    "path": "",
+                    "id": "346c1117-d8e9-45b7-8fd2-8fe6326e8d77",
+                    "path": "<Keyboard>/k",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "Resume",
+                    "groups": ";Phase1",
+                    "action": "Tertiary",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1c4cf63a-d6c6-4f41-b1ab-ed0f3f145c38",
+                    "path": "<Keyboard>/l",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Phase1",
+                    "action": "Quaternary",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c21f182f-2ab6-452c-a0ed-f813bf7ec5aa",
+                    "path": "<Keyboard>/j",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Phase1",
+                    "action": "Secondary",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -60,22 +92,11 @@
     ],
     "controlSchemes": [
         {
-            "name": "Keyboard&Mouse",
-            "bindingGroup": "Keyboard&Mouse",
+            "name": "Phase1",
+            "bindingGroup": "Phase1",
             "devices": [
                 {
                     "devicePath": "<Keyboard>",
-                    "isOptional": false,
-                    "isOR": false
-                }
-            ]
-        },
-        {
-            "name": "Gamepad",
-            "bindingGroup": "Gamepad",
-            "devices": [
-                {
-                    "devicePath": "<Gamepad>",
                     "isOptional": false,
                     "isOR": false
                 }

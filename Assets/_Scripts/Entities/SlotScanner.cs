@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using _Scripts.Manager;
 using _Scripts.PlayerControls;
 using _Scripts.Slots;
@@ -10,33 +11,92 @@ namespace _Scripts.Entities
     {
         [SerializeField] private LayerMask slotLayer;
         
-        private Vector2 _workSpace = new (4, 1);
+        private Vector2 _workSpace = new (4, 0.01f);
         
         private void Start()
         {
-            InputHandler.Instance.OnJumpInput += HandleOnJumpInput;
+            InputHandler.Instance.OnPrimaryInput += HandleOnPrimaryInput;
+            InputHandler.Instance.OnSecondaryInput += HandleOnSecondaryInput;
+            InputHandler.Instance.OnTertiaryInput += HandleOnTertiaryInput;
+            InputHandler.Instance.OnQuaternaryInput += HandleOnQuaternaryInput;
         }
 
         private void OnDisable()
         {
-            InputHandler.Instance.OnJumpInput -= HandleOnJumpInput;
+            InputHandler.Instance.OnPrimaryInput -= HandleOnPrimaryInput;
+            InputHandler.Instance.OnSecondaryInput -= HandleOnSecondaryInput;
+            InputHandler.Instance.OnTertiaryInput -= HandleOnTertiaryInput;
+            InputHandler.Instance.OnQuaternaryInput -= HandleOnQuaternaryInput;
         }
 
-        private void HandleOnJumpInput()
+        private void HandleOnPrimaryInput()
         {
             var otherColliders = Physics2D.OverlapBoxAll(transform.position, _workSpace,
                 0, slotLayer);
-            if (otherColliders.Length == 0)
+            var filteredColliders = otherColliders.Where(v => v.GetComponent<Slot>().index == 0).ToArray();
+            if (filteredColliders.Length == 0)
             {
                 GameManager.Instance.score--;
-                Debug.Log("Fuc");
                 return;
             }
-            foreach (var otherCollider in otherColliders)
+            foreach (var otherCollider in filteredColliders)
             {
                 otherCollider.GetComponent<Slot>().caught = true;
                 GameManager.Instance.score++;
-                Debug.Log("Yea");
+                otherCollider.GetComponent<Slot>().DestroySlot();
+            }
+        }
+        
+        private void HandleOnSecondaryInput()
+        {
+            var otherColliders = Physics2D.OverlapBoxAll(transform.position, _workSpace,
+                0, slotLayer);
+            var filteredColliders = otherColliders.Where(v => v.GetComponent<Slot>().index == 1).ToArray();
+            if (filteredColliders.Length == 0)
+            {
+                GameManager.Instance.score--;
+                return;
+            }
+            foreach (var otherCollider in filteredColliders)
+            {
+                otherCollider.GetComponent<Slot>().caught = true;
+                GameManager.Instance.score++;
+                otherCollider.GetComponent<Slot>().DestroySlot();
+            }
+        }
+        
+        private void HandleOnTertiaryInput()
+        {
+            var otherColliders = Physics2D.OverlapBoxAll(transform.position, _workSpace,
+                0, slotLayer);
+            var filteredColliders = otherColliders.Where(v => v.GetComponent<Slot>().index == 2).ToArray();
+            if (filteredColliders.Length == 0)
+            {
+                GameManager.Instance.score--;
+                return;
+            }
+            foreach (var otherCollider in filteredColliders)
+            {
+                otherCollider.GetComponent<Slot>().caught = true;
+                GameManager.Instance.score++;
+                otherCollider.GetComponent<Slot>().DestroySlot();
+            }
+        }
+        
+        private void HandleOnQuaternaryInput()
+        {
+            var otherColliders = Physics2D.OverlapBoxAll(transform.position, _workSpace,
+                0, slotLayer);
+            var filteredColliders = otherColliders.Where(v => v.GetComponent<Slot>().index == 3).ToArray();
+            if (filteredColliders.Length == 0)
+            {
+                GameManager.Instance.score--;
+                return;
+            }
+            foreach (var otherCollider in filteredColliders)
+            {
+                otherCollider.GetComponent<Slot>().caught = true;
+                GameManager.Instance.score++;
                 otherCollider.GetComponent<Slot>().DestroySlot();
             }
         }
@@ -46,7 +106,6 @@ namespace _Scripts.Entities
             if ((slotLayer.value & 1 << other.gameObject.layer) != 0 && !other.GetComponent<Slot>().caught)
             {
                 GameManager.Instance.score--;
-                Debug.Log("Noo");
             }
         }
     }

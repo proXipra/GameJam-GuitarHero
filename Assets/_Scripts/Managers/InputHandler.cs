@@ -18,19 +18,46 @@ namespace _Scripts.PlayerControls
 
         public bool JumpInput { get; set; }
         
-        public event Action OnJumpInput;
+        public event Action OnPrimaryInput;
+        public event Action OnSecondaryInput;
+        public event Action OnTertiaryInput;
+        public event Action OnQuaternaryInput;
 
         private void Awake()
         {
             _instance = this;
         }
 
-        public void Jump(InputAction.CallbackContext context)
+        public void Primary(InputAction.CallbackContext context)
         {
             if (context.canceled) JumpInput = false;
             if (!context.started) return;
             JumpInput = true;
-            OnJumpInput?.Invoke();
+            OnPrimaryInput?.Invoke();
+        }
+        
+        public void Secondary(InputAction.CallbackContext context)
+        {
+            if (context.canceled) JumpInput = false;
+            if (!context.started) return;
+            JumpInput = true;
+            OnSecondaryInput?.Invoke();
+        }
+        
+        public void Tertiary(InputAction.CallbackContext context)
+        {
+            if (context.canceled) JumpInput = false;
+            if (!context.started) return;
+            JumpInput = true;
+            OnTertiaryInput?.Invoke();
+        }
+        
+        public void Quaternary(InputAction.CallbackContext context)
+        {
+            if (context.canceled) JumpInput = false;
+            if (!context.started) return;
+            JumpInput = true;
+            OnQuaternaryInput?.Invoke();
         }
     }
 }

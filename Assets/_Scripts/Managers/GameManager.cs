@@ -62,7 +62,6 @@ namespace _Scripts.Manager
         {
             _audioSource.Play();
         }
-
     }
     
     public enum GameState

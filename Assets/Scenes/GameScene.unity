@@ -1231,7 +1231,7 @@ Transform:
   m_GameObject: {fileID: 1709656823}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.6677637, y: -0.3454414, z: -0.019900758}
+  m_LocalPosition: {x: 7.6677637, y: 0, z: -0.019900758}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1280,7 +1280,7 @@ MonoBehaviour:
     m_SingletonActionBindings: []
     m_Flags: 0
   window: 0.3
-  bpm: 120
+  bpm: 250
   _audioSource: {fileID: 221853387}
   score: 0
 --- !u!4 &1728151103
@@ -1327,7 +1327,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1728151105}
         m_TargetAssemblyTypeName: _Scripts.PlayerControls.InputHandler, Assembly-CSharp
-        m_MethodName: Jump
+        m_MethodName: Primary
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1337,14 +1337,58 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 75d2e3ba-7042-470b-a5de-27ce409c44ab
-    m_ActionName: 'Gameplay/Jump[/Keyboard/space]'
+    m_ActionId: 59e49995-5c4e-41e6-a10f-3092c62c614d
+    m_ActionName: 'Phase6/Primary[/Keyboard/a]'
   - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 64780fc1-2742-4a55-8eb0-9b4bd0d573f8
-    m_ActionName: Pause/Resume
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+      m_Calls:
+      - m_Target: {fileID: 1728151105}
+        m_TargetAssemblyTypeName: _Scripts.PlayerControls.InputHandler, Assembly-CSharp
+        m_MethodName: Secondary
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c81571a7-5652-4bd9-bbcd-3786e939f457
+    m_ActionName: 'Phase6/Secondary[/Keyboard/w]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1728151105}
+        m_TargetAssemblyTypeName: _Scripts.PlayerControls.InputHandler, Assembly-CSharp
+        m_MethodName: Tertiary
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 7df8e7e3-c905-4277-ac42-2783d774bfd8
+    m_ActionName: 'Phase6/Tertiary[/Keyboard/s]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1728151105}
+        m_TargetAssemblyTypeName: _Scripts.PlayerControls.InputHandler, Assembly-CSharp
+        m_MethodName: Quaternary
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: cca476ba-31fa-4f68-93d5-44cbe59e036d
+    m_ActionName: 'Phase6/Quaternary[/Keyboard/d]'
+  m_NeverAutoSwitchControlSchemes: 1
+  m_DefaultControlScheme: Phase1
   m_DefaultActionMap: Gameplay
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
