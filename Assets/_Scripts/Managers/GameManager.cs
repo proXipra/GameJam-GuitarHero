@@ -23,6 +23,14 @@ namespace _Scripts.Manager
 
         private bool _pressed;
         public int score;
+        private int _bestScore;
+        public int BestScore
+        {
+            get
+            {
+                return _bestScore;
+            }
+        }
         public float Period => 60 / bpm;
 
         public event Action OnStartMoving;

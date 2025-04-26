@@ -11,6 +11,8 @@ public class UIManager : MonoBehaviour
     }
 
     [SerializeField] private TextMeshProUGUI _text;
+    [SerializeField] private TextMeshProUGUI _bestScore;
+
 
     private void Awake()
     {
@@ -19,7 +21,9 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        _text.text = $"{GameManager.Instance.score}";   
+        _text.text = $"{GameManager.Instance.score}";
+
+        
     }
 
 }
