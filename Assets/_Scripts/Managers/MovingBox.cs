@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace _Scripts.Manager
@@ -19,11 +20,19 @@ namespace _Scripts.Manager
         public void HandleOnStartMoving()
         {
             InvokeRepeating(nameof(MovingBoxUpdate), 3 - GameManager.Instance.Period / 2, 0.01f);
+            InvokeRepeating(nameof(ResetPosition), 3 - GameManager.Instance.Period / 2, GameManager.Instance.Period);
+
         }
         private void MovingBoxUpdate()
         {
             transform.Translate(Vector3.left * 0.01f * 2 * distance / GameManager.Instance.Period);
-            if (transform.position.x <= -distance) transform.position = Vector3.right * distance;
+            
+        }
+
+
+        private void ResetPosition()
+        {
+            transform.position = Vector3.right * distance;
         }
     }
 }
