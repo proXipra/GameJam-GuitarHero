@@ -18,7 +18,6 @@ namespace _Scripts.Manager
 
         public float window;
         [SerializeField] private float bpm;
-        [SerializeField] private SpriteRenderer spriteRenderer;
         [SerializeField] private AudioSource _audioSource;
 
         private bool _pressed;
@@ -101,7 +100,6 @@ namespace _Scripts.Manager
         {
             active = true;
             _pressed = false;
-            spriteRenderer.color = Color.red;
             Invoke(nameof(ExitWindow), window);
         }
 
@@ -116,7 +114,6 @@ namespace _Scripts.Manager
                 _score--;
             }
            
-            spriteRenderer.color = Color.white;
             active = false;
         }
 
