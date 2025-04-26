@@ -6,8 +6,8 @@ namespace _Scripts.Slots
     public class Slot : MonoBehaviour
     {
         public float targetYDisplacement;
-
         public float distance;
+        public bool caught;
         
         private SpriteRenderer SpriteRenderer => _spriteRenderer ??= GetComponent<SpriteRenderer>();
         private SpriteRenderer _spriteRenderer;

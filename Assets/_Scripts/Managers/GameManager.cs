@@ -21,14 +21,7 @@ namespace _Scripts.Manager
         [SerializeField] private AudioSource _audioSource;
 
         private bool _pressed;
-        private int _score;
-        public int Score
-        {
-            get
-            {
-                return _score;
-            }
-        }
+        public int score;
         private int _bestScore;
         public int BestScore
         {
@@ -49,10 +42,10 @@ namespace _Scripts.Manager
 
         private void Update()
         {
-            if (_score > _bestScore)
+            if (score > _bestScore)
             {
-                _bestScore = _score;
-                PlayerPrefs.SetInt("BestScore", _score);
+                _bestScore = score;
+                PlayerPrefs.SetInt("BestScore", score);
                 PlayerPrefs.Save();
             }
 
@@ -60,61 +53,9 @@ namespace _Scripts.Manager
 
         private void Start()
         {
-            
-            InputHandler.Instance.OnJumpInput += HandleOnJumpInput;
             OnStartMoving?.Invoke();
-            Invoke(nameof(StartGame), 3);
             Invoke(nameof(StartPlayingMusic), 3 - (GameManager.Instance.Period - GameManager.Instance.window) / 2);
             _bestScore = PlayerPrefs.GetInt("BestScore", 0);
-        }
-        
-        private void OnDisable()
-        {
-            InputHandler.Instance.OnJumpInput -= HandleOnJumpInput;
-        }
-
-        private void StartGame()
-        {
-            InvokeRepeating(nameof(EnterWindow), 0, Period);
-        }
-
-        private void HandleOnJumpInput()
-        {
-            if (active)
-            {
-                _score++;
-                _pressed = true;
-            }
-            else
-            {
-                if (_score == 0)
-                {
-                    return;
-                }
-                _score--;
-            }
-            
-        }
-
-        private void EnterWindow()
-        {
-            active = true;
-            _pressed = false;
-            Invoke(nameof(ExitWindow), window);
-        }
-
-        private void ExitWindow()
-        {
-            if (!_pressed)
-            {
-                if (_score == 0)
-                {
-                    return;
-                }
-                _score--;
-            }
-           
-            active = false;
         }
 
         void StartPlayingMusic()

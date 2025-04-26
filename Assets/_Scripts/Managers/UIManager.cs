@@ -21,7 +21,7 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        _scoreText.text = $"Score:{GameManager.Instance.Score}";
+        _scoreText.text = $"Score:{GameManager.Instance.score}";
         _bestScore.text = $"Best:{GameManager.Instance.BestScore}";
 
         
