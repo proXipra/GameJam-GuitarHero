@@ -1,11 +1,13 @@
-using System;
 using _Scripts.PlayerControls;
+using _Scripts.Slots;
 using UnityEngine;
 
 namespace _Scripts.Entities
 {
     public class SlotScanner : MonoBehaviour
     {
+        [SerializeField] private LayerMask slotLayer;
+        
         private Vector2 _workSpace = new (4, 1);
         
         private void Start()
@@ -20,7 +22,9 @@ namespace _Scripts.Entities
 
         private void HandleOnJumpInput()
         {
-            Physics2D.OverlapBox(transform.position, _workSpace)
+            var otherCollider = Physics2D.OverlapBox(transform.position, _workSpace,
+                0, slotLayer);
+            if (otherCollider) otherCollider.GetComponent<Slot>().DestroySlot();
         }
     }
 }
