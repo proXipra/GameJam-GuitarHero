@@ -1,3 +1,4 @@
+using _Scripts.Manager;
 using _Scripts.PlayerControls;
 using _Scripts.Slots;
 using UnityEngine;
@@ -24,7 +25,11 @@ namespace _Scripts.Entities
         {
             var otherColliders = Physics2D.OverlapBoxAll(transform.position, _workSpace,
                 0, slotLayer);
-            if (otherColliders.Length == 0) return;
+            if (otherColliders.Length == 0)
+            {
+                // GameManager.Instance.Score--;
+                return;
+            }
             foreach (var otherCollider in otherColliders)
             {
                 otherCollider.GetComponent<Slot>().DestroySlot();
