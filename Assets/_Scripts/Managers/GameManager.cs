@@ -53,8 +53,20 @@ namespace _Scripts.Manager
 
         private void HandleOnJumpInput()
         {
-            score = active ? score + 1 : score - 1;
-            if (active) _pressed = true;
+            if (active)
+            {
+                score++;
+                _pressed = true;
+            }
+            else
+            {
+                if (score == 0)
+                {
+                    return;
+                }
+                score--;
+            }
+            
         }
 
         private void EnterWindow()
@@ -67,7 +79,15 @@ namespace _Scripts.Manager
 
         private void ExitWindow()
         {
-            if (!_pressed) score--;
+            if (!_pressed)
+            {
+                if (score == 0)
+                {
+                    return;
+                }
+                score--;
+            }
+           
             spriteRenderer.color = Color.white;
             active = false;
         }
