@@ -2,6 +2,7 @@ using _Scripts.PlayerControls;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using System;
 using UnityEngine.InputSystem;
 
 
@@ -15,13 +16,15 @@ namespace _Scripts.Manager
 
         public InputAction playerControls;
 
+        public float window;
         [SerializeField] private float bpm;
-        [SerializeField] private float window;
         [SerializeField] private SpriteRenderer spriteRenderer;
 
         private bool _pressed;
         public int score;
         public float Period => 60 / bpm;
+
+        public event Action OnStartMoving;
 
         private void Awake()
         {
@@ -31,13 +34,18 @@ namespace _Scripts.Manager
         private void Start()
         {
             InputHandler.Instance.OnJumpInput += HandleOnJumpInput;
-
-            InvokeRepeating(nameof(EnterWindow), 0, Period);
+            OnStartMoving?.Invoke();
+            Invoke(nameof(StartGame), 3);
         }
         
         private void OnDisable()
         {
             InputHandler.Instance.OnJumpInput -= HandleOnJumpInput;
+        }
+
+        private void StartGame()
+        {
+            InvokeRepeating(nameof(EnterWindow), 0, Period);
         }
 
         private void HandleOnJumpInput()
