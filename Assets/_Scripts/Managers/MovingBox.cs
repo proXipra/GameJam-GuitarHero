@@ -19,8 +19,8 @@ namespace _Scripts.Manager
 
         public void HandleOnStartMoving()
         {
-            InvokeRepeating(nameof(MovingBoxUpdate), 3 - GameManager.Instance.Period / 2, 0.01f);
-            InvokeRepeating(nameof(ResetPosition), 3 - GameManager.Instance.Period / 2, GameManager.Instance.Period);
+            InvokeRepeating(nameof(MovingBoxUpdate), 3 - (GameManager.Instance.Period - GameManager.Instance.window) / 2, 0.01f);
+            InvokeRepeating(nameof(ResetPosition), 3 - (GameManager.Instance.Period - GameManager.Instance.window) / 2, GameManager.Instance.Period);
 
         }
         private void MovingBoxUpdate()

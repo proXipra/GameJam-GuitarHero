@@ -7,10 +7,16 @@ namespace _Scripts.PlayerControls
 {
     public class InputHandler : MonoBehaviour
     {
-        public static InputHandler Instance;
+        private static InputHandler _instance;
+        public static InputHandler Instance 
+        { 
+            get
+            { return _instance; }
+        
+        }
 
-        private PlayerInput PlayerInput => _playerInput ??= GetComponent<PlayerInput>();
-        private PlayerInput _playerInput;
+
+
 
         public bool JumpInput { get; set; }
         
