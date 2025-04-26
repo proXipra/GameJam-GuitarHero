@@ -781,7 +781,8 @@ GameObject:
   m_Component:
   - component: {fileID: 942147098}
   - component: {fileID: 942147097}
-  m_Layer: 0
+  - component: {fileID: 942147099}
+  m_Layer: 6
   m_Name: SlotScanner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -818,7 +819,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -832,7 +833,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 4, y: 1}
   m_EdgeRadius: 0
 --- !u!4 &942147098
 Transform:
@@ -849,6 +850,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &942147099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 942147096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d574ff45d2d24265b7364ebbe50cc675, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1200018269
 GameObject:
   m_ObjectHideFlags: 0
@@ -1067,7 +1080,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 362d75105fa89f14881f8e35c8ea3f2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _text: {fileID: 563789180}
+  _scoreText: {fileID: 0}
   _bestScore: {fileID: 0}
 --- !u!4 &1709656825
 Transform:
@@ -1129,7 +1142,6 @@ MonoBehaviour:
   window: 0.3
   bpm: 120
   _audioSource: {fileID: 221853387}
-  score: 0
 --- !u!4 &1728151103
 Transform:
   m_ObjectHideFlags: 0
