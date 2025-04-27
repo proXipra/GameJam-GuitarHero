@@ -40,14 +40,14 @@ namespace _Scripts.Manager
         public InputActionReference tetriaryAction;
         public InputActionReference quaternaryAction;
 
-        public String[] primaryKeys = { "q","a","h"};
-        public String[] secondaryKeys = { "w", "f", "j" };
-        public String[] tetriaryKeys = { "e", "j", "k" };
-        public String[] quaternaryKeys = { "r", "i", "l" };
+        //public String[] primaryKeys = { "q","a","h"};
+        //public String[] secondaryKeys = { "w", "f", "j" };
+        //public String[] tetriaryKeys = { "e", "j", "k" };
+        //public String[] quaternaryKeys = { "r", "i", "l" };
 
         private float _eventTimer;
         private float _nextChangeKeys;
-        private int currentKeyState = -1;
+        private int currentKeyState = 1;
 
 
 
@@ -59,7 +59,7 @@ namespace _Scripts.Manager
 
         private void Start()
         {
-            SwitchKeyState();
+            ChangeToKeyStateOne();
             _nextChangeKeys = UnityEngine.Random.Range(5f, 15f);
 
             OnStartMoving?.Invoke();
@@ -128,6 +128,11 @@ namespace _Scripts.Manager
             secondaryAction.action.ApplyBindingOverride(0, "<Keyboard>/j");
             tetriaryAction.action.ApplyBindingOverride(0, "<Keyboard>/k");
             quaternaryAction.action.ApplyBindingOverride(0, "<Keyboard>/l");
+
+            UIManager.Instance._pInput.text = "h";
+            UIManager.Instance._sInput.text = "j";
+            UIManager.Instance._tInput.text = "k";
+            UIManager.Instance._qInput.text = "l";
         }
 
         void ChangeToKeyStateTwo()
@@ -136,6 +141,10 @@ namespace _Scripts.Manager
             secondaryAction.action.ApplyBindingOverride(0, "<Keyboard>/f");
             tetriaryAction.action.ApplyBindingOverride(0, "<Keyboard>/j");
             quaternaryAction.action.ApplyBindingOverride(0, "<Keyboard>/i");
+            UIManager.Instance._pInput.text = "a";
+            UIManager.Instance._sInput.text = "f";
+            UIManager.Instance._tInput.text = "j";
+            UIManager.Instance._qInput.text = "i";
         }
 
         void ChangeToKeyStateThree()
@@ -144,20 +153,14 @@ namespace _Scripts.Manager
             secondaryAction.action.ApplyBindingOverride(0, "<Keyboard>/w");
             tetriaryAction.action.ApplyBindingOverride(0, "<Keyboard>/e");
             quaternaryAction.action.ApplyBindingOverride(0, "<Keyboard>/r");
+            UIManager.Instance._pInput.text = "q";
+            UIManager.Instance._sInput.text = "w";
+            UIManager.Instance._tInput.text = "e";
+            UIManager.Instance._qInput.text = "r";
         }
 
 
-        private void ChangeKeys()
-        {
-            Debug.Log("here");
-            primaryAction.action.ApplyBindingOverride(0, Keyboard.current[primaryKeys[1]].path);
-            secondaryAction.action.ApplyBindingOverride(0, Keyboard.current[secondaryKeys[1]].path);
-            tetriaryAction.action.ApplyBindingOverride(0, Keyboard.current[tetriaryKeys[1]].path);
-            quaternaryAction.action.ApplyBindingOverride(0, Keyboard.current[quaternaryKeys[1]].path);
-
-
-
-        }
+        
 
         void StartPlayingMusic()
         {

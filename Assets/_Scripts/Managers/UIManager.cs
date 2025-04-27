@@ -13,6 +13,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _scoreText;
     [SerializeField] private TextMeshProUGUI _bestScore;
 
+    [SerializeField] public TextMeshProUGUI _pInput;
+    [SerializeField] public TextMeshProUGUI _sInput;
+    [SerializeField] public TextMeshProUGUI _tInput;
+    [SerializeField] public TextMeshProUGUI _qInput;
+
 
     private void Awake()
     {
