@@ -16,7 +16,7 @@ namespace _Scripts.Manager
         {
             GameManager.Instance.OnStartMoving -= HandleOnStartMoving;
         }
-
+        
         public void HandleOnStartMoving()
         {
             InvokeRepeating(nameof(MovingBoxUpdate), 3 - (GameManager.Instance.Period - GameManager.Instance.window) / 2, 0.01f);
