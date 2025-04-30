@@ -4,7 +4,7 @@ This is a 2D rhythm game inspired by Guitar Hero, developed in just 2 days durin
 Built with Unity, the game challenges players to press keys in sync with the music to score points.  
 Thanks to the modular system we built, you can easily add and play with your own music tracks.
 
-> 🎮 **Play on Itch.io:** [Itch.io Linkinizi Buraya Ekleyin]
+> 🎮 **Play on Itch.io:** [https://proxipra.itch.io/yengec-burger]
 
 ---
 
@@ -22,7 +22,7 @@ Bu oyun, Guitar Hero’dan ilham alınarak geliştirilmiş 2D bir ritim oyunudur
 Unity ile geliştirilen oyunda, müziğe uyumlu şekilde gelen notalara zamanında basarak puan kazanmaya çalışırsınız.  
 Yazdığımız modüler sistem sayesinde istediğiniz müziği oyuna kolayca ekleyebilir ve oynayabilirsiniz.
 
-> 🎮 **Itch.io’da Oyna:** [Itch.io Linkinizi Buraya Ekleyin]
+> 🎮 **Itch.io’da Oyna:** [https://proxipra.itch.io/yengec-burger]
 
 ---
 
