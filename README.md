@@ -22,7 +22,7 @@ Bu oyun, Guitar Hero’dan ilham alınarak geliştirilmiş 2D bir ritim oyunudur
 Unity ile geliştirilen oyunda, müziğe uyumlu şekilde gelen notalara zamanında basarak puan kazanmaya çalışırsınız.  
 Yazdığımız modüler sistem sayesinde istediğiniz müziği oyuna kolayca ekleyebilir ve oynayabilirsiniz.
 
-> 🎮 **Itch.io’da Oyna:** [https://proxipra.itch.io/yengec-burger]
+> 🎮 **Itch.io’da Oyna:** https://proxipra.itch.io/yengec-burger
 
 ---
 
